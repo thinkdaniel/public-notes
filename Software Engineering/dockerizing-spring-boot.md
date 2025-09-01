@@ -152,6 +152,20 @@ docker run \
   my-spring-boot-app
 ```
 
+You can also save the environment variables into `.env.development`. Remember to add this file to your `.gitignore` to avoid committing sensitive information.
+
+```
+DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/mydb
+DATABASE_USERNAME=myuser
+DATABASE_PASSWORD=mypass
+```
+
+Then start the container with the following command:
+
+```bash
+docker run --env-file .env.development -p 8080:8080 my-spring-boot-app
+```
+
 ### Conclusion
 
 In this guide, we covered the process of dockerizing a Spring Boot application using a multi-stage Docker build. This approach helps to create a lightweight and efficient Docker image that can be easily deployed in various environments.
