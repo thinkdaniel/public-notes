@@ -623,6 +623,116 @@ This happens when both branches have new commits - they've diverged.
 
 **Exercise:** Practice both types of merges.
 
+### 7.4 Cleaning Up Merged Branches
+
+Once you've merged a feature branch back into main, the branch has served its purpose. It's good practice to delete it to keep your branch list clean and manageable.
+
+**Why delete merged branches?**
+
+- Keeps `git branch` output clean and readable
+- Prevents confusion about which branches are active
+- The commits are already in main - nothing is lost!
+
+**Check which branches you have:**
+
+```bash
+git branch
+```
+
+You might see something like:
+
+```
+  feature-new-queries
+  feature-analysis
+* main
+```
+
+**Delete a merged branch (safe):**
+
+```bash
+git branch -d feature-new-queries
+```
+
+- The `-d` flag means "delete"
+- Git will **prevent you** from deleting if the branch isn't fully merged (safe!)
+- You'll see: `Deleted branch feature-new-queries`
+
+**What if Git refuses to delete?**
+
+If you see an error like:
+
+```
+error: The branch 'feature-xyz' is not fully merged.
+```
+
+This means:
+
+- The branch has commits that aren't in main yet
+- Git is protecting you from losing work
+- **Options:**
+  - Merge the branch first, then delete it
+  - Or use force delete (next section) if you're sure
+
+**Force delete a branch (use carefully!):**
+
+```bash
+git branch -D feature-practice
+```
+
+- The `-D` flag (capital D) means "force delete"
+- Use this when you want to delete a branch with unmerged work
+- **Warning:** You'll lose any commits that aren't in main!
+- Only use this if you're certain you don't need those changes
+
+**Important reassurance:**
+
+When you delete a branch after merging:
+
+- All the commits are **still in main's history**
+- Your work is **not lost**
+- You're just removing the branch label/pointer
+- The branch name is gone, but the code lives on in main
+
+**Quick practice:**
+
+1. **List your branches:**
+
+   ```bash
+   git branch
+   ```
+
+2. **Delete a branch you've already merged:**
+
+   ```bash
+   git branch -d feature-analysis
+   ```
+
+3. **Verify it's gone:**
+
+   ```bash
+   git branch
+   ```
+
+4. **Check that the commits are still in main:**
+   ```bash
+   git log --oneline
+   ```
+   You'll see all the commits from the deleted branch!
+
+**When to keep a branch:**
+
+- You're still working on it
+- You plan to continue development later
+- It's not ready to merge yet
+
+**When to delete a branch:**
+
+- It's been successfully merged
+- You don't need to work on it anymore
+- You want to start fresh with a new branch for the next feature
+
+**Exercise:** Practice the complete workflow: Create a branch → Make commits → Merge to main → Delete the branch → Verify commits are still in history.
+
 ---
 
 ## Section 8: Handling Merge Conflicts (25 minutes)
@@ -795,6 +905,8 @@ Click the button you want!
    ```bash
    git commit -m "Merge feature-update-config and resolve conflicts"
    ```
+   
+   **Important:** This creates a **merge commit** regardless of how you resolved the conflict (manually or with VS Code buttons). The merge commit exists because the two branches diverged, not because of the conflict itself.
 
 5. Check the log:
    ```bash
