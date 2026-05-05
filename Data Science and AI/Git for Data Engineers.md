@@ -330,6 +330,11 @@ git reset HEAD~1
 
 **When to use:** You want to reorganize which files go into which commit
 
+**💡 This is the most commonly used reset!** It's the default (you don't need `--mixed` flag) because it lets you:
+- Review and edit your changes before recommitting
+- Split one commit into multiple smaller commits
+- Add more changes before committing again
+
 #### Option 3: Hard Reset (⚠️ Delete Everything)
 
 Goes back one commit and **deletes all your changes**
@@ -349,39 +354,42 @@ git reset --hard HEAD~1
 
 ### 5.3 Practice Undoing
 
-Let's practice:
+Let's practice with mixed reset (the most common reset type):
 
 1. **Create and commit a file:**
-   - Create `mistake.txt` in VS Code
-   - Type: `This is a mistake`
+   - Create `work.txt` in VS Code
+   - Type: `Draft of my analysis`
    - Save it
    - Add and commit:
      ```bash
-     git add mistake.txt
-     git commit -m "Add mistake file"
+     git add work.txt
+     git commit -m "Add analysis draft"
      ```
 
-2. **Undo with soft reset:**
+2. **Undo with mixed reset:**
    ```bash
-   git reset --soft HEAD~1
+   git reset HEAD~1
    ```
+   
+   **Why mixed reset?** It gives you the most flexibility - your changes are safe but unstaged, so you can review, edit, or reorganize them before committing again.
+
 3. **Check status:**
 
    ```bash
    git status
    ```
 
-   Your file is still there and still staged (green)!
-   - **The file is in the Staging Area** - ready to commit again
+   Your file is still there but unstaged (red)!
+   - **The file is in the Working Directory** - you can edit it before staging again
 
 4. **Edit the file in VS Code:**
-   - Change text to: `This is actually correct`
+   - Change text to: `Complete analysis with findings`
    - Save it
 
-5. **Commit again with better message:**
+5. **Add and commit again with better message:**
    ```bash
-   git add mistake.txt
-   git commit -m "Add correct note file"
+   git add work.txt
+   git commit -m "Add complete analysis with findings"
    ```
 
 ### 5.4 Other Useful Undo Commands
