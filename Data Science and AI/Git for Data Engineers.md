@@ -392,22 +392,6 @@ Let's practice with mixed reset (the most common reset type):
    git commit -m "Add complete analysis with findings"
    ```
 
-### 5.4 Other Useful Undo Commands
-
-**Unstage a file (but keep the changes):**
-
-```bash
-git restore --staged note1.txt
-```
-
-**Discard changes to a file (revert to last commit):**
-
-```bash
-git restore note1.txt
-```
-
-⚠️ This deletes your unsaved changes!
-
 **Exercise:** Practice each type of reset to understand the differences.
 
 ---
