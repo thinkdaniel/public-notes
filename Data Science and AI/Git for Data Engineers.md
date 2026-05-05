@@ -1117,9 +1117,9 @@ project/
 
 ---
 
-## Section 12: (Optional) Pushing to GitHub (15 minutes)
+## Section 11: (Optional) Pushing to GitHub (15 minutes)
 
-### 12.1 Why Use GitHub?
+### 11.1 Why Use GitHub?
 
 So far, we've been working with **local Git** - everything is on your computer.
 
@@ -1135,7 +1135,7 @@ So far, we've been working with **local Git** - everything is on your computer.
 - **Local Git** = Saving your game on your console
 - **GitHub** = Cloud save that syncs across devices
 
-### 12.2 Creating a Repository on GitHub
+### 11.2 Creating a Repository on GitHub
 
 **Prerequisites:** You need a GitHub account (free at github.com)
 
@@ -1153,9 +1153,45 @@ So far, we've been working with **local Git** - everything is on your computer.
 
 4. **Click "Create repository"**
 
-5. **You'll see a page with instructions** - we'll use the "push an existing repository" section
+5. **You'll see a page with instructions** - we'll use VS Code to push our code!
 
-### 12.3 Connecting Your Local Repository to GitHub
+### 11.3 Pushing to GitHub - VS Code Method (Easiest!)
+
+**VS Code makes pushing to GitHub incredibly simple:**
+
+**First time setup:**
+
+1. **Sign in to GitHub in VS Code** (if not already)
+   - Click the account icon in bottom left
+   - "Sign in to sync settings" → Sign in with GitHub
+
+2. **Open Source Control** (left sidebar, or Ctrl/Cmd+Shift+G)
+
+3. **Click "Publish Branch"** button
+   - VS Code will prompt you to select the repository name
+   - Choose whether to make it public or private
+   - That's it! Your code is now on GitHub! 🎉
+
+**What VS Code does automatically:**
+- Creates the remote connection to GitHub
+- Pushes all your commits
+- Handles authentication
+- Sets up tracking for future pushes
+
+**For subsequent pushes:**
+- Make your changes and commit them (Source Control panel)
+- Click the **"Sync Changes"** button (or the ↑ arrow with a number)
+- Done!
+
+**Advantages:**
+- No need to remember commands
+- Visual interface
+- Automatic authentication
+- Clear indicators of what will be pushed
+
+### 11.4 Pushing to GitHub - Command Line Method (Alternative)
+
+**If you prefer the command line, here's how:**
 
 **In your VS Code terminal:**
 
@@ -1185,7 +1221,7 @@ So far, we've been working with **local Git** - everything is on your computer.
 - Just a nickname for your GitHub repository
 - You could name it anything, but "origin" is the standard name
 
-### 12.4 Pushing Your Code to GitHub
+2. **Push your commits:**
 
 **Push = Upload your commits to GitHub**
 
@@ -1206,7 +1242,7 @@ git push -u origin main
 
 **After pushing:** Refresh your GitHub repository page - your files are there! 🎉
 
-### 12.5 The Daily Workflow with GitHub
+### 11.5 The Daily Workflow with GitHub
 
 Once connected, your workflow becomes:
 
@@ -1234,7 +1270,9 @@ git push
 
 Uploads your commits to GitHub
 
-### 12.6 Cloning a Repository
+**Or in VS Code:** Just click the "Sync Changes" button!
+
+### 11.6 Cloning a Repository
 
 **Clone = Download a repository from GitHub to your computer**
 
@@ -1247,7 +1285,9 @@ cd git-demo
 
 Now you have a complete copy with all history!
 
-### 12.7 Quick Reference
+**Or in VS Code:** Command Palette (Ctrl/Cmd+Shift+P) → "Git: Clone" → paste the URL
+
+### 11.7 Quick Reference
 
 ```bash
 # Setup (one time)
@@ -1267,7 +1307,12 @@ git pull
 git clone https://github.com/USER/REPO.git
 ```
 
-### 12.8 Common Issues
+**VS Code shortcuts:**
+- Publish Branch: First time pushing a new branch
+- Sync Changes: Push and pull in one action
+- Command Palette → "Git: Clone": Clone a repository
+
+### 11.8 Common Issues
 
 **Problem:** `git push` asks for password repeatedly
 
@@ -1298,32 +1343,9 @@ git commit
 git push
 ```
 
-### 12.9 VS Code GitHub Integration (Easiest Method!)
+**Note:** Most of these issues are avoided when using VS Code's UI, as it handles conflicts and syncing visually!
 
-**VS Code makes GitHub even easier:**
-
-1. **Install GitHub Extension** (if not already installed)
-   - Search for "GitHub Pull Requests and Issues" in Extensions
-
-2. **Sign in to GitHub** in VS Code
-   - Click the account icon in bottom left
-   - "Sign in to sync settings" → Sign in with GitHub
-
-3. **Push using VS Code UI:**
-   - Click the Source Control icon (left sidebar)
-   - Click the "..." menu → Push
-   - Or click "Publish Branch" if it's your first push
-
-4. **Pull using VS Code UI:**
-   - Same menu → Pull
-
-**Advantages:**
-
-- No need to remember commands
-- Visual conflict resolution
-- Handles authentication automatically
-
-### 12.10 Next Steps with GitHub
+### 11.9 Next Steps with GitHub
 
 After mastering basic push/pull:
 
