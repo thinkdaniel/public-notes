@@ -599,6 +599,20 @@ This happens when both branches have new commits - they've diverged.
    git merge feature-analysis
    ```
 
+   **What happens next:**
+   - A text editor will open asking you to write a merge commit message
+   - It will have a default message like `Merge branch 'feature-analysis'`
+   - You can keep the default or edit it
+   - **In VS Code:** Just save the file (Ctrl+S or Cmd+S) and close the tab
+   - **In a terminal editor (Vim):** Press `Esc`, type `:wq`, press Enter
+   
+   **On success, you'll see:**
+   ```
+   Merge made by the 'ort' strategy.
+   ```
+   
+   **What is 'ort' strategy?** It's Git's default merge algorithm (since Git 2.34). "Ort" stands for "Ostensibly Recursive's Twin" - it's a faster, more efficient version of Git's recursive merge strategy. For most users, you don't need to worry about it - it just means Git successfully combined your branches automatically!
+
 6. **Look at the log:**
 
    ```bash
