@@ -557,26 +557,17 @@ This happens when main hasn't changed since you created the feature branch.
 
 ### 7.3 Merge with Merge Commit
 
-This happens when both branches have new commits.
+This happens when both branches have new commits - they've diverged.
 
 **Let's set this up:**
 
-1. **On main, create a new file:**
-   - Create `main_note.txt`
-   - Type: `Important note on main branch`
-   - Commit:
-     ```bash
-     git add main_note.txt
-     git commit -m "Add important note on main"
-     ```
-
-2. **Create and switch to new branch:**
+1. **Create and switch to a new branch:**
 
    ```bash
    git switch -c feature-analysis
    ```
 
-3. **On feature branch, create a file:**
+2. **On feature branch, create a file:**
    - Create `analysis.txt`
    - Type: `Data analysis notes`
    - Commit:
@@ -585,14 +576,30 @@ This happens when both branches have new commits.
      git commit -m "Add analysis notes"
      ```
 
-4. **Switch back to main and merge:**
+3. **Switch back to main:**
 
    ```bash
    git switch main
+   ```
+
+4. **On main, create a different file:**
+   - Create `main_note.txt`
+   - Type: `Important note on main branch`
+   - Commit:
+     ```bash
+     git add main_note.txt
+     git commit -m "Add important note on main"
+     ```
+
+   **Now both branches have diverged!** Main has `main_note.txt` and feature-analysis has `analysis.txt`
+
+5. **Merge the feature branch into main:**
+
+   ```bash
    git merge feature-analysis
    ```
 
-5. **Look at the log:**
+6. **Look at the log:**
 
    ```bash
    git log --oneline --graph
