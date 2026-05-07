@@ -298,6 +298,23 @@ Common situations:
 
 ### 5.2 Three Ways to Reset
 
+All three reset examples below use `HEAD~1`.
+
+**What does `HEAD~1` mean?**
+
+- `HEAD` means "the commit you are currently on"
+- `~1` means "go back 1 commit from there"
+- So `HEAD~1` means "the commit before the current one"
+
+You can change the number to go further back:
+
+```bash
+git reset HEAD~2    # Go back 2 commits
+git reset HEAD~3    # Go back 3 commits
+```
+
+The reset type (`--soft`, mixed/default, or `--hard`) controls what happens to your files after Git moves back.
+
 #### Option 1: Soft Reset (Keep Your Changes Ready)
 
 Goes back one commit but keeps your files ready to commit again
@@ -393,6 +410,40 @@ Let's practice with mixed reset (the most common reset type):
    ```
 
 **Exercise:** Practice each type of reset to understand the differences.
+
+**Optional Exercise:** Try resetting more than one commit back.
+
+1. Create and commit two small files:
+
+   ```bash
+   echo "First draft" > draft1.txt
+   git add draft1.txt
+   git commit -m "Add first draft"
+
+   echo "Second draft" > draft2.txt
+   git add draft2.txt
+   git commit -m "Add second draft"
+   ```
+
+2. Check your recent history:
+
+   ```bash
+   git log --oneline
+   ```
+
+3. Reset back two commits with mixed reset:
+
+   ```bash
+   git reset HEAD~2
+   ```
+
+4. Check status:
+
+   ```bash
+   git status
+   ```
+
+   Both files should still be in your working directory, but they are no longer staged or committed.
 
 ---
 
