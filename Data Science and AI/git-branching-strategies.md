@@ -65,23 +65,6 @@ Most strategies use some combination of these branch types.
 
 Branch names are conventions, not Git requirements. The important part is that the team can infer intent from the name.
 
-Examples:
-
-```text
-feature/add-login
-bugfix/fix-empty-report
-hotfix/payment-timeout
-release/1.4.0
-chore/update-dependencies
-docs/git-branching-guide
-refactor/extract-auth-service
-test/add-login-tests
-ci/cache-python-dependencies
-perf/speed-up-report-query
-security/rotate-api-token
-experiment/vector-search
-```
-
 ---
 
 ## Strategies We Will Discuss
