@@ -598,6 +598,7 @@ Each collaborator commits and pushes their branch:
 git add names.txt
 git commit -m "Add my name"
 git push -u origin <feature-branch-name>
+# e.g. git push -u origin feature/add-alice-name
 ```
 
 ### 5. Collaborators: Open pull requests
@@ -753,4 +754,71 @@ The activity demonstrated the normal GitHub Flow cycle:
 
 ```text
 create branch -> commit -> push -> open PR -> review -> resolve conflict -> merge -> clean up
+```
+
+---
+
+## Git Command Cheatsheet
+
+Commands used in this lesson:
+
+| Command                                          | What it does                                                                        |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `git clone <repository-url>`                     | Copies a remote repository to your local machine                                    |
+| `git status`                                     | Shows the current branch, changed files, staged files, and conflict state           |
+| `git switch main`                                | Switches to the `main` branch                                                       |
+| `git switch -c feature/add-kpi-charts`           | Creates and switches to a new branch                                                |
+| `git pull origin main`                           | Fetches the latest `main` from `origin` and merges it into the current local branch |
+| `git add names.txt`                              | Stages `names.txt` for the next commit                                              |
+| `git add .`                                      | Stages all changed files in the current directory and below                         |
+| `git commit -m "Add my name"`                    | Creates a commit with the given message                                             |
+| `git commit`                                     | Creates a commit and opens an editor for the commit message                         |
+| `git push -u origin <feature-branch-name>`       | Pushes a new local branch to `origin` and sets the upstream tracking branch         |
+| `git push`                                       | Pushes commits from the current local branch to its upstream branch                 |
+| `git merge main`                                 | Merges the current local `main` branch into the branch you are currently on         |
+| `git merge --abort`                              | Cancels an in-progress merge and returns the branch to its pre-merge state          |
+| `git branch`                                     | Lists local branches                                                                |
+| `git branch -d <feature-branch-name>`            | Deletes a local branch if Git considers it safely merged                            |
+| `git branch -D <feature-branch-name>`            | Force-deletes a local branch, even if it has unmerged work                          |
+| `git push origin --delete <feature-branch-name>` | Deletes a branch from the remote repository                                         |
+| `git fetch --prune`                              | Updates remote-tracking references and removes stale ones                           |
+| `cat names.txt`                                  | Prints the contents of `names.txt` in the terminal                                  |
+
+Common GitHub Flow sequence:
+
+```bash
+git switch main
+git pull origin main
+git switch -c feature/add-kpi-charts
+
+# make changes
+git add .
+git commit -m "Add KPI charts"
+git push -u origin feature/add-kpi-charts
+```
+
+Then open a pull request from `feature/add-kpi-charts` into `main`.
+
+Conflict resolution sequence:
+
+```bash
+git switch main
+git pull origin main
+git switch feature/add-bob-name
+git merge main
+
+# edit conflicted files
+git add names.txt
+git commit
+git push
+```
+
+Cleanup sequence after merge:
+
+```bash
+git switch main
+git pull origin main
+git branch -d <feature-branch-name>
+git push origin --delete <feature-branch-name>
+git fetch --prune
 ```
